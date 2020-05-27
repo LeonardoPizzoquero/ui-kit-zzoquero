@@ -7,3 +7,6 @@ storiesOf('Button', module)
   .add('Default', () => (
     <Button>Hover Me</Button>
   ))
+  .add('Outlined', () => (
+    <Button outlined>Hover Me</Button>
+  ))
