@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 interface Props {
@@ -12,13 +12,15 @@ export const ButtonComponent = styled.button<Props>`
   max-width: 100%;
   text-align: center;
   color: ${(props) => props.color};
-  background: ${(props) => props.backgroundColor};
+  background: ${(props) => props.outlined ? 'transparent' : props.backgroundColor};
   border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
   transition: background-color 0.2s;
+
+  border: ${(props: Props) => props.outlined ? '2px solid '+props.backgroundColor : 'none'};
 
   &:hover {
     background: ${(props: Props) => shade(0.2, props.backgroundColor as string)};
