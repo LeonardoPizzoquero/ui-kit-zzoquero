@@ -19,13 +19,13 @@ type Images = Obj[];
 
 interface Props {
   /**
-   * Pass an array with your favorite images, don't forget to pass an valid URL
-   */
-  imageList: Obj[];
-  /**
    * You can set duration of images transitions, by default 5s (5000ms)
    */
   duration?: number;
+  /**
+   * You can disable autoplay transitions, by default is active
+   */
+  autoPlay?: boolean;
   /**
    * Arrows to control previous and next images
    */
@@ -34,15 +34,33 @@ interface Props {
    * Bullets to navigate between images
    */
   bullets?: boolean;
+
+  /**
+   * Will recieve all img tags and include on carousel
+   */
+  children: JSX.Element[];
 }
 
-const Slider: React.FC<Props> = ({
-  imageList,
+const Carousel: React.FC<Props> = ({
   duration = 5000,
+  autoPlay = true,
   controls = true,
   bullets = true,
+  children,
 }) => {
-  const [images, setImages] = useState<Images>(imageList);
+  const getAllChildrenImages = useCallback(() => {
+    const allImages = children
+      .filter((image) => image.type === 'img')
+      .map((image, index: number) => {
+        return { id: index, url: image.props.src }
+      });
+
+      return allImages;
+  }, [children]);
+
+  const childrenImages = useMemo<Images>(getAllChildrenImages, [children]);
+
+  const [images, setImages] = useState<Images>(childrenImages);
 
   const isEmpty = useMemo(() => images.length > 0, [images]);
   const imageListLength = useMemo(() => images.length - 1, [images]);
@@ -64,9 +82,11 @@ const Slider: React.FC<Props> = ({
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(nextImage, duration);
+    if (autoPlay) {
+      const timer = setTimeout(nextImage, duration);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, [duration, nextImage]);
 
   return (
@@ -74,10 +94,10 @@ const Slider: React.FC<Props> = ({
       {controls && (
         <>
           <ArrowLeft onClick={prevImage}>
-            <FiChevronLeft size={100} color="#ddd" />
+            <FiChevronLeft size={40} color="#ddd" />
           </ArrowLeft>
           <ArrowRight onClick={nextImage}>
-            <FiChevronRight size={100} color="#ddd" />
+            <FiChevronRight size={40} color="#ddd" />
           </ArrowRight>
         </>
       )}
@@ -104,6 +124,7 @@ const Slider: React.FC<Props> = ({
                   <Bullet
                     onClick={() => handleSetImage(index)}
                     key={image.id}
+                    active={currentImage=== index}
                   />
                 );
               })}
@@ -114,4 +135,4 @@ const Slider: React.FC<Props> = ({
   );
 };
 
-export { Slider };
+export { Carousel };

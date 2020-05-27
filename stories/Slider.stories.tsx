@@ -1,57 +1,72 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Slider } from '../src';
+import { Carousel } from '../src';
 
-storiesOf('Slider', module)
+storiesOf('Carousel', module)
   .add('Default', () => {
-    const images = [
-      { id: 1, url: 'https://dummyimage.com/1920x1080/BE1C1C/fff.jpg' },
-      { id: 2, url: 'https://dummyimage.com/1920x1080/1C98BE/fff.jpg' },
-      { id: 3, url: 'https://dummyimage.com/1920x1080/27BE1C/fff.jpg' },
-      { id: 4, url: 'https://dummyimage.com/1920x1080/670B7E/fff.jpg' },
-    ]
-
-    return <div style={{ width: '1200px', height: '720px' }}><Slider imageList={images} /></div>
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
   })
   .add('No arrows', () => {
-    const images = [
-      { id: 1, url: 'https://dummyimage.com/1920x1080/BE1C1C/fff.jpg' },
-      { id: 2, url: 'https://dummyimage.com/1920x1080/1C98BE/fff.jpg' },
-      { id: 3, url: 'https://dummyimage.com/1920x1080/27BE1C/fff.jpg' },
-      { id: 4, url: 'https://dummyimage.com/1920x1080/670B7E/fff.jpg' },
-    ]
-
-    return <div style={{ width: '1200px', height: '720px' }}><Slider controls={false} imageList={images} /></div>
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel controls={false}>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
   })
   .add('No bullets', () => {
-    const images = [
-      { id: 1, url: 'https://dummyimage.com/1920x1080/BE1C1C/fff.jpg' },
-      { id: 2, url: 'https://dummyimage.com/1920x1080/1C98BE/fff.jpg' },
-      { id: 3, url: 'https://dummyimage.com/1920x1080/27BE1C/fff.jpg' },
-      { id: 4, url: 'https://dummyimage.com/1920x1080/670B7E/fff.jpg' },
-    ]
-
-    return <div style={{ width: '1200px', height: '720px' }}><Slider bullets={false} imageList={images} /></div>
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel bullets={false}>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
   })
   .add('Without all Controls', () => {
-    const images = [
-      { id: 1, url: 'https://dummyimage.com/1920x1080/BE1C1C/fff.jpg' },
-      { id: 2, url: 'https://dummyimage.com/1920x1080/1C98BE/fff.jpg' },
-      { id: 3, url: 'https://dummyimage.com/1920x1080/27BE1C/fff.jpg' },
-      { id: 4, url: 'https://dummyimage.com/1920x1080/670B7E/fff.jpg' },
-    ]
-
-    return <div style={{ width: '1200px', height: '720px' }}><Slider controls={false} bullets={false} imageList={images} /></div>
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel controls={false} bullets={false}>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
   })
   .add('Set duration', () => {
-    const images = [
-      { id: 1, url: 'https://dummyimage.com/1920x1080/BE1C1C/fff.jpg' },
-      { id: 2, url: 'https://dummyimage.com/1920x1080/1C98BE/fff.jpg' },
-      { id: 3, url: 'https://dummyimage.com/1920x1080/27BE1C/fff.jpg' },
-      { id: 4, url: 'https://dummyimage.com/1920x1080/670B7E/fff.jpg' },
-    ]
-
-    return <div style={{ width: '1200px', height: '720px' }}><Slider duration={1000} imageList={images} /></div>
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel duration={2000}>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
   })
-
+  .add('Disabled AutoPlay', () => {
+    return (
+      <div style={{ width: '1200px', height: '720px' }}>
+        <Carousel autoPlay={false}>
+          <img src="https://dummyimage.com/1920x1080/BE1C1C/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/1C98BE/fff.jpg" alt=""/>
+          <img src="https://dummyimage.com/1920x1080/27BE1C/fff.jpg" alt=""/>
+        </Carousel>
+      </div>
+    )
+  })

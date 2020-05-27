@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const ButtonComponent = styled.button`
+interface Props {
+  color?: string;
+  backgroundColor?: string;
+  outlined?: boolean;
+}
+
+export const ButtonComponent = styled.button<Props>`
   padding: 20px 30px;
   max-width: 100%;
   text-align: center;
-  color: #fff;
-  background: #bf2026;
+  color: ${(props) => props.color};
+  background: ${(props) => props.backgroundColor};
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -15,6 +21,6 @@ export const ButtonComponent = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background: ${shade(0.2, '#bf2026')};
+    background: ${(props: Props) => shade(0.2, props.backgroundColor as string)};
   }
 `;

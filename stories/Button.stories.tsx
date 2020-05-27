@@ -4,4 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '../src';
 
 storiesOf('Button', module)
-  .add('Default', () => <Button>Isso Aí</Button>)
+  .add('Default', () => (
+    <Button>Hover Me</Button>
+  ))

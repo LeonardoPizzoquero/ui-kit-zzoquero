@@ -1,2 +1,2 @@
 export { Button } from './components/Button';
-export { Slider } from './components/Slider';
+export { Carousel } from './components/Carousel';
