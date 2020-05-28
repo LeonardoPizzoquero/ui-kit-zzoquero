@@ -1,6 +1,6 @@
 {
-  "name": "ui-kit-pizzoquero",
-  "version": "1.0.0",
+  "name": "zzoquero",
+  "version": "1.0.2",
   "author": "Leonardo Pizzoquero",
   "main": "dist/index.js",
   "license": "MIT",

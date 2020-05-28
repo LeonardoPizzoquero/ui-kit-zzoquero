@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const ButtonComponent = styled.button<Props>`
+  outline: 0;
   padding: 20px 30px;
   max-width: 100%;
   text-align: center;

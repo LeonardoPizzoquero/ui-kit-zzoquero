@@ -28,6 +28,7 @@ export const Image = styled.img<ImageProps>`
 `;
 
 export const ArrowLeft = styled.button`
+  outline: 0;
   position: absolute;
   z-index: 100;
   left: 0;
@@ -41,6 +42,7 @@ export const ArrowLeft = styled.button`
 `;
 
 export const ArrowRight = styled.button`
+  outline: 0;
   position: absolute;
   z-index: 100;
   right: 0%;
@@ -71,6 +73,7 @@ export const Bullets = styled.div`
 `;
 
 export const Bullet = styled.button<BulletProps>`
+  outline: 0;
   width: 20px;
   height: 20px;
   border-radius: 50%;
