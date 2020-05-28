@@ -1,9 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/dist/blocks';
 import { Carousel } from '../src';
 
 storiesOf('Carousel', module)
+  .addParameters({
+    docs: {
+      container: DocsContainer,
+      page: DocsPage,
+    },
+  })
   .add('Default', () => {
     return (
       <div style={{ width: '1200px', height: '720px' }}>

@@ -1,10 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text } from '@storybook/addon-knobs';
-
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/dist/blocks';
 import { H1, H2, H3, H4, H5, H6, Paragraph } from '../src';
 
 storiesOf('Typography', module)
+  .addParameters({
+    docs: {
+      container: DocsContainer,
+      page: DocsPage,
+    },
+  })
   .add('Headers', () => {
     return (
       <>

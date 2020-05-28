@@ -5,3 +5,6 @@ tsconfig.json
 .github
 __tests__
 yarn-error.log
+.eslintrc.json
+prettier.config.js
+.editorconfig
