@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { shade } from 'polished';
 
 interface Props {
@@ -11,18 +11,25 @@ export const ButtonComponent = styled.button<Props>`
   padding: 20px 30px;
   max-width: 100%;
   text-align: center;
-  color: ${(props) => props.color};
-  background: ${(props) => props.outlined ? 'transparent' : props.backgroundColor};
-  border-radius: 10px;
+  color: ${(props: Props) => props.color};
+  background: ${(props: Props) =>
+    props.outlined ? 'transparent' : props.backgroundColor};
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
   transition: background-color 0.2s;
+  border: ${(props: Props) =>
+    props.outlined ? `2px solid ${props.backgroundColor}` : 'none'};
 
-  border: ${(props: Props) => props.outlined ? '2px solid '+props.backgroundColor : 'none'};
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 
   &:hover {
-    background: ${(props: Props) => shade(0.2, props.backgroundColor as string)};
+    background: ${(props: Props) =>
+      shade(0.2, props.backgroundColor as string)};
   }
 `;

@@ -36,7 +36,7 @@ interface Props {
   bullets?: boolean;
 
   /**
-   * Will recieve all img tags and include on carousel
+   * Will recieve all img tags and include on carousel, children elements is REQUIRED
    */
   children: JSX.Element[];
 }
@@ -52,15 +52,15 @@ const Carousel: React.FC<Props> = ({
     const allImages = children
       .filter((image) => image.type === 'img')
       .map((image, index: number) => {
-        return { id: index, url: image.props.src }
+        return { id: index, url: image.props.src };
       });
 
-      return allImages;
+    return allImages;
   }, [children]);
 
   const childrenImages = useMemo<Images>(getAllChildrenImages, [children]);
 
-  const [images, setImages] = useState<Images>(childrenImages);
+  const [images] = useState<Images>(childrenImages);
 
   const isEmpty = useMemo(() => images.length > 0, [images]);
   const imageListLength = useMemo(() => images.length - 1, [images]);
@@ -87,7 +87,7 @@ const Carousel: React.FC<Props> = ({
 
       return () => clearTimeout(timer);
     }
-  }, [duration, nextImage]);
+  }, [autoPlay, duration, nextImage]);
 
   return (
     <Container>
@@ -124,7 +124,7 @@ const Carousel: React.FC<Props> = ({
                   <Bullet
                     onClick={() => handleSetImage(index)}
                     key={image.id}
-                    active={currentImage=== index}
+                    active={currentImage === index}
                   />
                 );
               })}

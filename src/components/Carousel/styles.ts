@@ -75,8 +75,8 @@ export const Bullet = styled.button<BulletProps>`
   height: 20px;
   border-radius: 50%;
   border: 2px solid #ddd;
-  background: ${(props) => props.active ? 'rgba(0, 0, 0, 0.6)' : 'transparent'};
-
+  background: ${(props) =>
+    props.active ? 'rgba(0, 0, 0, 0.6)' : 'transparent'};
 
   &:hover {
     background: rgba(0, 0, 0, 0.3);
